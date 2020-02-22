@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form.component';
 import { ArticlesComponent } from '../articles/articles.component';
+import { LoginService} from './login.service';
 
 const appRoutes: Routes = [
   { path: 'login',      component: LoginFormComponent },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ), BrowserModule, ReactiveFormsModule, MaterialModule, BrowserAnimationsModule],
   declarations: [ AppComponent, LoginFormComponent, ArticlesComponent ],
+  providers: [LoginService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { 

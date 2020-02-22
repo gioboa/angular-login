@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs'
 import { Router } from '@angular/router';
 
+interface Login {loggedIn: boolean, error: string}
 @Injectable()
 export class LoginService {
 

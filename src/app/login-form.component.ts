@@ -1,5 +1,6 @@
 import { Input, Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { LoginService} from './login.service';
 
 @Component({
   selector: 'my-login-form',
@@ -20,9 +21,11 @@ import { FormGroup, FormControl } from '@angular/forms';
             </mat-form-field>
           </p>
 
-          <p *ngIf="error" class="error">
-            {{ error }}
-          </p>
+          <div *ngIf="(loginService.login$ | async)?.error as error" class="error">
+            <mat-error>
+                Error: wrong username or password NOT valid.
+            </mat-error>
+          </div>
 
           <div class="button">
             <button type="submit" mat-button>Login</button>
@@ -52,10 +55,7 @@ import { FormGroup, FormControl } from '@angular/forms';
       }
 
       .error {
-        padding: 16px;
-        width: 300px;
-        color: white;
-        background-color: red;
+        padding: 0 0 20px 0;        
       }
 
       .button {
@@ -72,12 +72,11 @@ export class LoginFormComponent {
     password: new FormControl(''),
   });
 
+  constructor(private loginService: LoginService){}
+
   submit() {
     if (this.form.valid) {
-      this.login.emit(this.form.value);
+      this.loginService.submit(this.form.value);
     }
   }
-  @Input() error: string | null;
-
-  @Output() login = new EventEmitter();
 }
