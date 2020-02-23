@@ -1,33 +1,20 @@
-import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from '../login/login.component';
-import { ArticlesComponent } from '../articles/articles.component';
-import { LoginService} from '../services/login.service';
-
-const appRoutes: Routes = [
-  { path: 'login',      component: LoginComponent },
-  { path: 'articles',      component: ArticlesComponent },
-  { path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
-  { path: '**', component: LoginComponent }
-];
+import { LoginComponent } from './login/login.component';
+import { MaterialModule } from './material.module';
+import { ActionsService } from './services/actions.service';
+import { AuthGuard } from './services/auth.guard';
+import { LoginService } from './services/login.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ), BrowserModule, ReactiveFormsModule, MaterialModule, BrowserAnimationsModule],
-  declarations: [ AppComponent, LoginComponent, ArticlesComponent ],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, ReactiveFormsModule, MaterialModule, BrowserAnimationsModule, AppRoutingModule],
+  declarations: [AppComponent, LoginComponent],
+  providers: [ActionsService, LoginService, StorageService, AuthGuard],
+  bootstrap: [AppComponent]
 })
-export class AppModule { 
-}
+export class AppModule {}

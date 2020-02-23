@@ -16,10 +16,15 @@ mat-card-content {
 }
 
 .error {
-  padding: 0 0 20px 0;        
+  padding: 0 0 20px 0;
 }
 
 .button {
   display: flex;
   justify-content: flex-end;
+}
+
+.login-logo {
+  width: 100px;
+  margin: 20px 35%;
 }

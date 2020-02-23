@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs'
-import { Router } from '@angular/router';
-
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   template: `
-  <router-outlet></router-outlet>
-  `,
-  styles: []
+    <router-outlet></router-outlet>
+  `
 })
-export class AppComponent  {
-  constructor(private router: Router) {}
-}
+export class AppComponent {}
