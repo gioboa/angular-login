@@ -27,7 +27,6 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ), BrowserModule, ReactiveFormsModule, MaterialModule, BrowserAnimationsModule],
   declarations: [ AppComponent, LoginComponent, ArticlesComponent ],
-  providers: [LoginService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { 

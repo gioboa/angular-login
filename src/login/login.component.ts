@@ -1,6 +1,7 @@
 import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActionsService} from '../app/actions.service';
+import { ActionTypes, ActionsService} from '../services/actions.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private actionsService: ActionsService){}
+  constructor(private loginService: LoginService, private actionsService: ActionsService){}
 
   ngOnInit() {
     //
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      
+      this.actionsService.dispatch(ActionTypes.LOGIN, this.form.value)
     }
   } 
 
