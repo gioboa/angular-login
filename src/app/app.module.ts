@@ -6,18 +6,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form.component';
+import { LoginComponent } from '../login/login.component';
 import { ArticlesComponent } from '../articles/articles.component';
-import { LoginService} from './login.service';
+import { LoginService} from '../services/login.service';
 
 const appRoutes: Routes = [
-  { path: 'login',      component: LoginFormComponent },
+  { path: 'login',      component: LoginComponent },
   { path: 'articles',      component: ArticlesComponent },
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
   },
-  { path: '**', component: LoginFormComponent }
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({
@@ -26,7 +26,7 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ), BrowserModule, ReactiveFormsModule, MaterialModule, BrowserAnimationsModule],
-  declarations: [ AppComponent, LoginFormComponent, ArticlesComponent ],
+  declarations: [ AppComponent, LoginComponent, ArticlesComponent ],
   providers: [LoginService],
   bootstrap:    [ AppComponent ]
 })
