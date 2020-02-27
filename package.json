@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "build": "node a.js && ng build",
+    "test": "NODE_ENV='production' && if-env NODE_ENV==production && echo 'prod' $NODE_ENV || echo 'dev' $NODE_ENV",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format:check": "prettier --list-different './src/**/*.ts'",
@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "if-env": "^1.0.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
